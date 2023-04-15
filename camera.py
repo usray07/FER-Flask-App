@@ -40,7 +40,7 @@ class VideoCamera(object):
                 image_pixels = np.expand_dims(image_pixels, axis = 0)
                 image_pixels /= 255
                 pred = model.predict_emotion(image_pixels)
-                cv2.putText(frame, "{}".format(pred), (x+w+2,y+h+2), FONT,0.7, (240,16,255),2)  
+                cv2.putText(frame, "{}, {}".format(pred[0],pred[1]), (x+w+2,y+h+2), FONT,0.7, (240,16,255),2)  
 
             lable = "Face(s) Detected"
             lable_dimension = cv2.getTextSize(lable,FONT ,FONT_SCALE,FONT_THICKNESS)[0]

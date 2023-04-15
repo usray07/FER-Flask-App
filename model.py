@@ -18,9 +18,10 @@ class FacialExpressionModel(object):
     def predict_emotion(self,img):
         self.preds = self.loaded_model.predict(img)
         max_index = np.argmax(self.preds[0])
+        conf = str(np.round(np.max(self.preds[0])*100,1))+ "%"
         # print(self.preds)
         # print(max_index)
         # print(FacialExpressionModel.EMOTIONS_LIST[max_index])
-        return FacialExpressionModel.EMOTIONS_LIST[max_index]
+        return [FacialExpressionModel.EMOTIONS_LIST[max_index],conf]
                   
                   
